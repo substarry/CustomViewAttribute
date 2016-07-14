@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="attr_1">from attr in theme</item>
+        <item name="attr_2">from attr in theme</item>
+        <item name="attr_3">from attr in theme</item>
+        <item name="attr_4">from attr in theme</item>
+        <item name="CustomAttrStyle">@style/CustomAttrStyleInTheme</item>
+    </style>
+
+    <!-- the default style in theme, use for R.attr.CustomAttrStyle，
+        and set R.attr.CustomAttrStyle for defStyleAttr in view constructor
+        this priority is lower than the style set in layout (#CustomAttrViewStyle)
+
+        在主题中将这个style设置给 R.attr.CustomAttrStyle，
+        并在自定义view的构造函数中设置 defStyleAttr 为 R.attr.CustomAttrStyle
+        优先级低于在layout中设置的style -->
+    <style name="CustomAttrStyleInTheme">
+        <item name="attr_1">from style in theme (defStyleAttr)</item>
+        <item name="attr_2">from style in theme (defStyleAttr)</item>
+        <item name="attr_3">from style in theme (defStyleAttr)</item>
+    </style>
+
+    <!-- use in layout xml, the priority is lower than the attr set in layout
+
+        在layout中定义view时，使用此style，优先级低于layout中设置的attr-->
+    <style name="CustomAttrViewStyle" >
+        <item name="attr_1">from view style (style in layout)</item>
+        <item name="attr_2">from view style (style in layout)</item>
+    </style>
+
+    <!-- use in view constructor:obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes),
+        set R.style.DefaultCustomAttrViewStyle as defStyleRes
+        if defStyleAttr is R.attr.CustomAttrStyle（defStyleAttr != 0） and there has reference for R.attr.CustomAttrStyle in theme(AppTheme), defStyleRes（DefaultCustomAttrViewStyle） will be ignore
+
+        在view的构造函数中使用：obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)，
+        设置defStyleRes为R.style.DefaultCustomAttrViewStyle，
+        如果defStyleAttr设置为R.attr.CustomAttrStyle（即defStyleAttr不为0），且在主题中有定义R.attr.CustomAttrStyle。则defStyleRes（DefaultCustomAttrViewStyle）将被忽略 -->
+    <style name="DefaultCustomAttrViewStyle">
+        <item name="attr_1">from default view style (defStyleRes)</item>
+        <item name="attr_2">from default view style (defStyleRes)</item>
+        <item name="attr_3">from default view style (defStyleRes)</item>
+    </style>
+
+
+    <!-- priority： attr in layout > style in layout > style in theme(defStyleAttr) > default style(defStyleRes), 如果不被忽略 > attr in theme-->
+</resources>

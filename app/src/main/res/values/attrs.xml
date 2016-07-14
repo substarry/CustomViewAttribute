@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomAttr">
+
+        <attr name="attr_1" format="string"/>
+        <attr name="attr_2" format="string"/>
+        <attr name="attr_3" format="string"/>
+        <attr name="attr_4" format="string"/>
+
+    </declare-styleable>
+    
+    <attr name="CustomAttrStyle" format="reference"/>
+
+</resources>
